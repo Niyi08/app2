@@ -1,0 +1,61 @@
+﻿<Window x:Class="WpfCoreDemo.App.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfCoreDemo.App"
+        mc:Ignorable="d"
+        d:DataContext="{d:DesignInstance Type={x:Type local:MainViewModel}, IsDesignTimeCreatable=false}"
+        Title="MainWindow" WindowState="Maximized"
+        FontSize="14">
+
+    <Grid>
+        <DockPanel>
+            <ToolBar DockPanel.Dock="Top">
+                <ToolBar.Items>
+                    <Button Content="Export to Excel" Command="{Binding ExportCommand}" />
+                </ToolBar.Items>
+            </ToolBar>
+
+            <ScrollViewer>
+                <ItemsControl ItemsSource="{Binding Tweets}">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="64" />
+                                    <ColumnDefinition />
+                                </Grid.ColumnDefinitions>
+
+                                <Image Grid.Column="0" 
+                                       Source="{Binding AuthorImageUrl}"
+                                       Margin="10" />
+
+                                <StackPanel Grid.Column="1">
+                                    <TextBlock FontWeight="Bold"
+                                               Foreground="Navy">
+                                        <Run Text="@" /><Run Text="{Binding AuthorName}" />
+                                    </TextBlock>
+
+                                    <TextBlock Text="{Binding Text}" 
+                                               TextWrapping="Wrap"
+                                               MaxHeight="40" />
+
+                                    <TextBlock Text="{Binding Date}"
+                                               Foreground="Gray"
+                                               FontSize="10" />
+                                </StackPanel>
+                            </Grid>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </ScrollViewer>
+
+            <TextBlock Text="Loading..." 
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       Visibility="{Binding SyncInProgress, Converter={StaticResource BooleanToVisibilityConverter}}" />
+        </DockPanel>
+    </Grid>
+
+</Window>
