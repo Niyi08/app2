@@ -20,6 +20,8 @@ namespace WpfCoreDemo.App
 
         public ICommand ExportCommand { get; private set; }
 
+        public ICommand AboutCommand { get; private set; }
+
         public bool SyncInProgress
         {
             get { return syncInProgress; }
@@ -39,6 +41,7 @@ namespace WpfCoreDemo.App
             this.exportService = exportService;
 
             ExportCommand = new RelayCommand(Export);
+            AboutCommand = new RelayCommand(About);
         }
 
 
@@ -64,6 +67,12 @@ namespace WpfCoreDemo.App
         private void Export()
         {
             exportService.ExportTweets(Tweets);
+        }
+
+        private void About()
+        {
+            var aboutWindow = new AboutWindow();
+            aboutWindow.ShowDialog();
         }
 
     }

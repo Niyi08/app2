@@ -18,6 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.Windows.SDK.Contracts" Version="10.0.18362.2002-preview" />
     <PackageReference Include="Microsoft.Extensions.Configuration" Version="3.0.0-preview9.19423.4" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="3.0.0-preview9.19423.4" />
     <PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="3.0.0-preview9.19423.4" />
