@@ -12,13 +12,10 @@ namespace WpfCoreDemo.App
     public class MainViewModel : INotifyPropertyChanged
     {
         private readonly TweetService tweetService;
-        private readonly ExportService exportService;
 
         private bool syncInProgress;
 
         public ObservableCollection<TweetDisplayData> Tweets { get; set; } = new ObservableCollection<TweetDisplayData>();
-
-        public ICommand ExportCommand { get; private set; }
 
         public ICommand AboutCommand { get; private set; }
 
@@ -35,12 +32,10 @@ namespace WpfCoreDemo.App
         public event PropertyChangedEventHandler PropertyChanged;
 
 
-        public MainViewModel(TweetService tweetService, ExportService exportService)
+        public MainViewModel(TweetService tweetService)
         {
             this.tweetService = tweetService;
-            this.exportService = exportService;
 
-            ExportCommand = new RelayCommand(Export);
             AboutCommand = new RelayCommand(About);
         }
 
@@ -62,11 +57,6 @@ namespace WpfCoreDemo.App
             }
 
             SyncInProgress = false;
-        }
-
-        private void Export()
-        {
-            exportService.ExportTweets(Tweets);
         }
 
         private void About()

@@ -12,7 +12,6 @@
     <DockPanel>
         <ToolBar DockPanel.Dock="Top">
             <ToolBar.Items>
-                <Button Content="Export to Excel" Command="{Binding ExportCommand}" />
                 <Button Content="About" Command="{Binding AboutCommand}" />
             </ToolBar.Items>
         </ToolBar>

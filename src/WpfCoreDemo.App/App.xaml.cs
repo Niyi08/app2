@@ -44,7 +44,6 @@ namespace WpfCoreDemo.App
             );
 
             // services
-            serviceCollection.AddSingleton<ExportService>();
             serviceCollection.AddSingleton<TweetService>();
             Tweetinvi.Auth.SetUserCredentials(
                 Configuration.GetSection("Twitter")["ConsumerKey"],
