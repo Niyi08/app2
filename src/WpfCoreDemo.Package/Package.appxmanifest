@@ -9,7 +9,7 @@
   <Identity
     Name="demo-864d9095-955f-4d3c-adb0-6574a5acb88b-dev"
     Publisher="CN=RIGANTI Signing Cert, O=RIGANTI, C=CS"
-    Version="1.0.5.0" />
+    Version="1.0.6.0" />
 
   <Properties>
     <DisplayName>WUG Days 2019 Demo App [DEV]</DisplayName>
