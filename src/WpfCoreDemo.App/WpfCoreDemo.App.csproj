@@ -5,6 +5,8 @@
     <TargetFramework>netcoreapp3.0</TargetFramework>
     <UseWPF>true</UseWPF>
     <UserSecretsId>7db4c047-7049-4f92-8254-2a275a0c8f28</UserSecretsId>
+    <RuntimeIdentifiers>win-x86</RuntimeIdentifiers>
+    <Platforms>AnyCPU;x86</Platforms>
   </PropertyGroup>
 
   <ItemGroup>
