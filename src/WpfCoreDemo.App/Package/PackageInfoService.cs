@@ -7,7 +7,7 @@ using Windows.Foundation.Metadata;
 
 namespace WpfCoreDemo.App.Packaging
 {
-    public class PackageInfoService
+    public static class PackageInfoService
     {
 
         public static PackageInfo GetPackageInfo()
@@ -28,5 +28,7 @@ namespace WpfCoreDemo.App.Packaging
                 return new PackageInfo();
             }
         }
+
+        public static bool IsPreview => GetPackageInfo().Name?.Contains("[PREVIEW]") == true;
     }
 }
