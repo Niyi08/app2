@@ -17,7 +17,7 @@ namespace WpfCoreDemo.App.Packaging
                 return new PackageInfo()
                 {
                     IsPackaged = true,
-                    Version = Package.Current.Id.Version.Major + "." + Package.Current.Id.Version.Minor + "." + Package.Current.Id.Version.Revision + "." + Package.Current.Id.Version.Build,
+                    Version = Package.Current.Id.Version.Major + "." + Package.Current.Id.Version.Minor + "." + Package.Current.Id.Version.Build + "." + Package.Current.Id.Version.Revision,
                     Name = Package.Current.DisplayName,
                     AppInstallerUri = Package.Current.GetAppInstallerInfo()?.Uri.ToString()
                 };
