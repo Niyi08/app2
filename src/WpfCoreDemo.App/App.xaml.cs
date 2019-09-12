@@ -19,8 +19,6 @@ namespace WpfCoreDemo.App
     /// </summary>
     public partial class App : Application
     {
-        private Window wnd;
-
         public IServiceProvider ServiceProvider { get; private set; }
         public IConfigurationRoot Configuration { get; private set; }
 
@@ -31,22 +29,8 @@ namespace WpfCoreDemo.App
             InitConfiguration();
             ConfigureServices();
 
-            // BUG: https://github.com/dotnet/wpf/issues/668
-            // first WPF window in preview05 shows with 100% DPI
-            wnd = new Window
-            {
-                Height = 0,
-                ShowInTaskbar = false,
-                Width = 0,
-                WindowStyle = WindowStyle.None
-            };
-            wnd.Show();
-            wnd.Hide();
-
             MainWindow = new MainWindow();
             MainWindow.Show();
-
-            wnd.Close();
         }
 
 

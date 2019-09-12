@@ -11,18 +11,13 @@ namespace WpfCoreDemo.Data.Services
     {
         public void ExportTweets(IEnumerable<TweetDisplayData> tweets)
         {
-            Application excel;
-            Workbook workbook;
-            Worksheet sheet;
-            Range range;
-
             // Start Excel and get Application object.
-            excel = new Application();
+            var excel = new Application();
             excel.Visible = true;
 
             // Get a new workbook.
-            workbook = excel.Workbooks.Add(Missing.Value);
-            sheet = (Worksheet)workbook.ActiveSheet;
+            var workbook = excel.Workbooks.Add(Missing.Value);
+            var sheet = (Worksheet)workbook.ActiveSheet;
 
             // Add table headers going cell by cell.
             var rowIndex = 1;
@@ -39,7 +34,7 @@ namespace WpfCoreDemo.Data.Services
             }
 
             // AutoFit columns A:D.
-            range = sheet.get_Range("A1", "B1");
+            var range = sheet.get_Range("A1", "B1");
             range.EntireColumn.AutoFit();
 
             // Make sure Excel is visible and give the user control

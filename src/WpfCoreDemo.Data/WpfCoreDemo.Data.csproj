@@ -1,13 +1,13 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFramework>netstandard2.1</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="EntityFramework" Version="6.3.0-preview5-19254-05" />
-    <PackageReference Include="System.ComponentModel.Annotations" Version="4.6.0-preview5.19224.8" />
-    <PackageReference Include="TweetinviAPI" Version="4.0.1" />
+    <PackageReference Include="EntityFramework" Version="6.3.0-preview9-19423-04" />
+    <PackageReference Include="System.ComponentModel.Annotations" Version="4.6.0-preview9.19421.4" />
+    <PackageReference Include="TweetinviAPI" Version="4.0.2" />
   </ItemGroup>
 
   <ItemGroup>

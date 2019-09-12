@@ -9,14 +9,14 @@
         Title="MainWindow" WindowState="Maximized"
         FontSize="14">
 
-    <Grid>
-        <DockPanel>
-            <ToolBar DockPanel.Dock="Top">
-                <ToolBar.Items>
-                    <Button Content="Export to Excel" Command="{Binding ExportCommand}" />
-                </ToolBar.Items>
-            </ToolBar>
+    <DockPanel>
+        <ToolBar DockPanel.Dock="Top">
+            <ToolBar.Items>
+                <Button Content="Export to Excel" Command="{Binding ExportCommand}" />
+            </ToolBar.Items>
+        </ToolBar>
 
+        <Grid>
             <ScrollViewer>
                 <ItemsControl ItemsSource="{Binding Tweets}">
                     <ItemsControl.ItemTemplate>
@@ -28,22 +28,22 @@
                                 </Grid.ColumnDefinitions>
 
                                 <Image Grid.Column="0" 
-                                       Source="{Binding AuthorImageUrl}"
-                                       Margin="10" />
+                                        Source="{Binding AuthorImageUrl}"
+                                        Margin="10" />
 
                                 <StackPanel Grid.Column="1">
                                     <TextBlock FontWeight="Bold"
-                                               Foreground="Navy">
+                                                Foreground="Navy">
                                         <Run Text="@" /><Run Text="{Binding AuthorName}" />
                                     </TextBlock>
 
                                     <TextBlock Text="{Binding Text}" 
-                                               TextWrapping="Wrap"
-                                               MaxHeight="40" />
+                                                TextWrapping="Wrap"
+                                                MaxHeight="40" />
 
                                     <TextBlock Text="{Binding Date}"
-                                               Foreground="Gray"
-                                               FontSize="10" />
+                                                Foreground="Gray"
+                                                FontSize="10" />
                                 </StackPanel>
                             </Grid>
                         </DataTemplate>
@@ -52,10 +52,10 @@
             </ScrollViewer>
 
             <TextBlock Text="Loading..." 
-                       HorizontalAlignment="Center"
-                       VerticalAlignment="Center"
-                       Visibility="{Binding SyncInProgress, Converter={StaticResource BooleanToVisibilityConverter}}" />
-        </DockPanel>
-    </Grid>
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        Visibility="{Binding SyncInProgress, Converter={StaticResource BooleanToVisibilityConverter}}" />
+        </Grid>
+    </DockPanel>
 
 </Window>
