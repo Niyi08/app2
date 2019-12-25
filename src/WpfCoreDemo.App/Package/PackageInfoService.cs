@@ -24,7 +24,7 @@ namespace WpfCoreDemo.App.Packaging
             }
             catch (InvalidOperationException)
             {
-                // package has no identity
+                // the app is not running from the package, return and empty info
                 return new PackageInfo();
             }
         }
