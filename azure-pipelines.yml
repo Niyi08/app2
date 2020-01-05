@@ -13,12 +13,23 @@ variables:
   solution: '**/*.sln'
   buildPlatform: 'x86'
   buildConfiguration: 'Release'
-  msixInstallerUrl: https://wugdaysdemoapp.azurewebsites.net
+  msixInstallUrl: https://wugdaysdemoapp.azurewebsites.net
   packageVersion: 1.0.0
   packageName: 'WUG Days Demo App'
 
 jobs: 
-- job: Preview
+- job: BuildMSIX
+  strategy: 
+    matrix: 
+      Preview:
+        channelName: 'preview'
+        packageIdSuffix: '-preview'
+        packageNameSuffix: ' [PREVIEW]'
+      Production:
+        channelName: 'production'
+        packageIdSuffix: ''
+        packageNameSuffix: ''
+
   steps:
   - task: DotNetCoreCLI@2
     inputs:
@@ -32,20 +43,20 @@ jobs:
       script: |
         [xml]$manifest= get-content ".\src\WpfCoreDemo.Package\Package.appxmanifest"
         $manifest.Package.Identity.Version = "$(packageVersion).$(Build.BuildId)"
-        $manifest.Package.Identity.Name = "demo-864d9095-955f-4d3c-adb0-6574a5acb88b-preview"
-        $manifest.Package.Properties.DisplayName = "$(packageName) [PREVIEW]"
-        $manifest.Package.Applications.Application.VisualElements.DisplayName = "$(packageName) [PREVIEW]"
+        $manifest.Package.Identity.Name = "demo-864d9095-955f-4d3c-adb0-6574a5acb88b$(packageIdSuffix)"
+        $manifest.Package.Properties.DisplayName = "$(packageName)$(packageNameSuffix)"
+        $manifest.Package.Applications.Application.VisualElements.DisplayName = "$(packageName)$(packageNameSuffix)"
         $manifest.save(".\src\WpfCoreDemo.Package\Package.appxmanifest")
 
   - task: VSBuild@1
     inputs:
       solution: '$(solution)'
-      msbuildArgs: '/restore /p:AppInstallerUri=$(msixInstallUrl)/preview /p:UapAppxPackageBuildMode=SideLoadOnly /p:GenerateAppInstallerFile=true'
+      msbuildArgs: '/restore /p:AppInstallerUri=$(msixInstallUrl)/$(channelName) /p:AppxPackageDir="$(Build.ArtifactStagingDirectory)/$(channelName)" /p:UapAppxPackageBuildMode=SideLoadOnly /p:GenerateAppInstallerFile=true'
       platform: '$(buildPlatform)'
       configuration: '$(buildConfiguration)'
 
   - task: PublishBuildArtifacts@1
     inputs:
-      PathtoPublish: 'src/WpfCoreDemo.Package/AppPackages'
+      PathtoPublish: '$(Build.ArtifactStagingDirectory)'
       ArtifactName: 'drop'
       publishLocation: 'Container'
