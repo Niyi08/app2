@@ -62,8 +62,9 @@
     <AppxBundlePlatforms>neutral</AppxBundlePlatforms>
     <AppInstallerUri>http://wugdays2019devopsapp.azurewebsites.net</AppInstallerUri>
     <HoursBetweenUpdateChecks>0</HoursBetweenUpdateChecks>
-    <PackageCertificateThumbprint></PackageCertificateThumbprint>
-    <AppxPackageSigningTimestampDigestAlgorithm></AppxPackageSigningTimestampDigestAlgorithm>
+    <PackageCertificateThumbprint>
+    </PackageCertificateThumbprint>
+    <AppxPackageSigningTimestampDigestAlgorithm>SHA256</AppxPackageSigningTimestampDigestAlgorithm>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <AppxBundle>Never</AppxBundle>
